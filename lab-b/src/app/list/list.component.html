@@ -1,1 +1,12 @@
-<p>list works!</p>
+<div id="frame">
+    <div>List component</div>
+    <div>
+        <input type="text" [(ngModel)]="inputText">
+        <button (click)="inputToElements()">Dodaj</button>
+    </div>
+    <ul>
+        <li *ngFor="let element of elements; index as i">{{element}}
+            <a href="#" (click)="removeElement(i)">Usuń</a>
+        </li>
+    </ul>
+</div>
