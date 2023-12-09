@@ -24,17 +24,23 @@
       <button type="button" class="btn btn-primary" (click)="addTask()">
         Add
       </button>
+      <button (click)="archiveCompleted()">Archive Completed</button>
     </div>
   </form>
+  
 
   <div class="tasks">
-    <div class="task" *ngFor="let task of tasks">
-      <div class="title">{{ task.title }}</div>
+    <div class="task" *ngFor="let task of tasks" [class.completed-task]="task.completed">
+      <div class="title" >{{ task.title }}</div>
       <div class="deadline">
         <span *ngIf="task.deadline">{{ task.deadline }}</span>
       </div>
       <div class="actions">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          [(ngModel)]="task.completed"
+          (change)="handleChange(task)"
+        />
       </div>
     </div>
   </div>

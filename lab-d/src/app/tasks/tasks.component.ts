@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task';
+import { Observable, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-tasks',
@@ -46,6 +47,29 @@ export class TasksComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  handleChange(task: Task): void {
+    this.tasksService.put(task).subscribe((task) => {
+      error: (err: any) => {
+        alert(err);
+        this.ngOnInit();
+      }
+    });
+  }
+
+  archiveCompleted(): void {
+    const observables: Observable<any>[] = [];
+    this.tasks.forEach((task) => {
+      if (task.completed) {
+        task.archived = true;
+        observables.push(this.tasksService.put(task));
+      }
+    });
+
+    forkJoin(observables).subscribe((results) => {
+      this.ngOnInit();
+    });
   }
 }
 

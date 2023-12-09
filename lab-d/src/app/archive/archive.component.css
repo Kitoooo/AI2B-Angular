@@ -4,38 +4,6 @@
   padding: 0 10px;
 }
 
-.new-task {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
-  margin-bottom: 20px;
-}
-
-.new-task .form-group {
-  display: flex;
-  flex-direction: column;
-}
-@media screen and (min-width: 768px) {
-  .new-task {
-    grid-template-columns: 1fr 1fr auto;
-  }
-
-  .new-task .form-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-  }
-
-  .new-task .form-group .form-control {
-    flex-grow: 1;
-  }
-}
-.completed-task {
-  color: grey;
-  text-decoration: line-through;
-  border-color: grey !important;
-}
 .tasks .task {
   background-color: white;
   border: 1px solid black;
