@@ -1,0 +1,47 @@
+<div class="container">
+  <form class="new-task">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        [(ngModel)]="newTask.title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="deadline">Deadline</label>
+      <input
+        type="date"
+        id="deadline"
+        name="title"
+        class="form-control"
+        [(ngModel)]="newTask.deadline"
+      />
+    </div>
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="addTask()">
+        Add
+      </button>
+      <button (click)="archiveCompleted()">Archive Completed</button>
+    </div>
+  </form>
+  
+
+  <div class="tasks">
+    <div class="task" *ngFor="let task of tasks" [class.completed-task]="task.completed">
+      <div class="title" >{{ task.title }}</div>
+      <div class="deadline">
+        <span *ngIf="task.deadline">{{ task.deadline }}</span>
+      </div>
+      <div class="actions">
+        <input
+          type="checkbox"
+          [(ngModel)]="task.completed"
+          (change)="handleChange(task)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
