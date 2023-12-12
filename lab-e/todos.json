@@ -6,6 +6,20 @@
       "deadline": "1900-01-01",
       "completed": false,
       "archived": false
+    },
+    {
+      "title": "LUL",
+      "deadline": "2023-12-20",
+      "completed": false,
+      "archived": false,
+      "id": 2
+    },
+    {
+      "title": "archive_example",
+      "deadline": "2023-12-23",
+      "completed": true,
+      "archived": true,
+      "id": 3
     }
   ]
 }

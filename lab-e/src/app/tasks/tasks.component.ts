@@ -21,10 +21,6 @@ export class TasksComponent implements OnInit {
   }
 
   addTask(): void {
-    if (!this.validateTask(this.newTask)) {
-      return;
-    }
-
     this.newTask.completed = false;
     this.newTask.archived = false;
 
@@ -35,18 +31,14 @@ export class TasksComponent implements OnInit {
     });
   }
   
-  private validateTask(task: Task): boolean {
-    if (task.title === undefined || task.title === null)
-    {
-      alert('Invalid title');
-      return false;
-    }
-    if (task.deadline === undefined || task.deadline === null)
-    {
-      alert('Invalid deadline');
-      return false;
-    }
-    return true;
+  canAddTask(): boolean {
+    let taskvalid = (this.newTask.title !== undefined && this.newTask.title !== '');
+    let deadlinevalid = (this.newTask.deadline !== undefined);
+    return taskvalid && deadlinevalid;
+  }
+
+  canArchiveCompleted(): boolean {
+    return this.tasks.some((task) => task.completed);
   }
 
   handleChange(task: Task): void {

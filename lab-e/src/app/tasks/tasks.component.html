@@ -1,47 +1,66 @@
 <div class="container">
   <form class="new-task">
-    <div class="form-group">
-      <label for="title">Title</label>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text" name="title" id="title" [(ngModel)]="newTask.title" />
+      <mat-hint>Enter at least 1 character.</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Deadline</mat-label>
       <input
-        type="text"
-        id="title"
-        name="title"
-        class="form-control"
-        [(ngModel)]="newTask.title"
-      />
-    </div>
-    <div class="form-group">
-      <label for="deadline">Deadline</label>
-      <input
-        type="date"
+        matInput
         id="deadline"
-        name="title"
-        class="form-control"
+        name="deadline"
         [(ngModel)]="newTask.deadline"
+        [matDatepicker]="deadlinePicker"
       />
-    </div>
+      <mat-datepicker-toggle matIconPrefix [for]="deadlinePicker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #deadlinePicker></mat-datepicker>
+    </mat-form-field>
+
     <div class="form-group">
-      <button type="button" class="btn btn-primary" (click)="addTask()">
+      <button
+        mat-raised-button
+        color="primary"
+        type="button"
+        (click)="addTask()"
+        [disabled]="!canAddTask()"
+      >
         Add
       </button>
-      <button (click)="archiveCompleted()">Archive Completed</button>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="archiveCompleted()"
+        [disabled]="!canArchiveCompleted()"
+      >
+        Archive Completed
+      </button>
     </div>
   </form>
-  
 
   <div class="tasks">
-    <div class="task" *ngFor="let task of tasks" [class.completed-task]="task.completed">
-      <div class="title" >{{ task.title }}</div>
-      <div class="deadline">
-        <span *ngIf="task.deadline">{{ task.deadline }}</span>
-      </div>
-      <div class="actions">
-        <input
-          type="checkbox"
+    <mat-card
+      [class.completed-task]="task.completed"
+      *ngFor="let task of tasks"
+      class="mb-20"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-card-subtitle *ngIf="task.deadline">{{
+          task.deadline | date : "yyyy-MM-dd"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <mat-checkbox
+          class="example-margin"
           [(ngModel)]="task.completed"
           (change)="handleChange(task)"
-        />
-      </div>
-    </div>
+          >Done
+        </mat-checkbox>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
