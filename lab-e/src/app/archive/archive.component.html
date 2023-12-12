@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="tasks">
+    <mat-card
+      [class.completed-task]="task.completed"
+      *ngFor="let task of tasks"
+      class="mb-20"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-card-subtitle *ngIf="task.deadline">{{
+          task.deadline | date : "yyyy-MM-dd"
+        }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-icon-button color="primary" (click)="deleteTask(task)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

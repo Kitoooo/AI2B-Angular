@@ -1,0 +1,13 @@
+.router-outlet {
+  min-height: 50vh;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: 0.5em 1em;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}

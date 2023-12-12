@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+/* body {
+  background: url("https://placehold.co/100x100/FFFFFF/EFEFEF/png?text=49449");
+} */
+
+:root {
+  --primary-color: #008148;
+  --secondary-color: #323b86;
+  --accent-color: #e8e7fa;
+  --shadow-color: #e8e8e8;
+}
+
+/* button.primary {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+} */
+
+/* * {
+  box-sizing: border-box;
+} */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
