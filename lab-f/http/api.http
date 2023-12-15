@@ -1,0 +1,46 @@
+### Authentication - provide username and password to receive a token
+
+# Description Allows to log in as admin.
+# Body: username & password
+
+# Users:
+# - admin:4321
+# - user:1234
+# - janek:1234
+# - franek:1234
+
+# Use the token from response in http-client.env.json file to test other endpoints
+
+POST https://labjwt.zecer.wi.zut.edu.pl/api/auth/login
+Content-Type: application/json
+
+{
+  "username":"admin",
+  "password":"4321"
+}
+
+
+### GET list of all API users (access restricted)
+ 
+GET https://labjwt.zecer.wi.zut.edu.pl/api/users
+Accept: application/json
+Authorization: 
+
+# admin = eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBRE1JTiIsIlVTRVIiXSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MDI2NTQ0MTAsImV4cCI6MTcwMjY1NTMxMH0.yj2OQQ6OQVNSim67af4ijwgmp5sRr_jqaSN7TVAqUq4
+
+#user = eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInN1YiI6InVzZXIiLCJpYXQiOjE3MDI2NTQ2MjQsImV4cCI6MTcwMjY1NTUyNH0.oj3-GClqPolPE44X1vMUo3JIrV8jDCQkcFpV1zSoeBI
+### GET list of all items in the API (access restricted)
+GET https://labjwt.zecer.wi.zut.edu.pl/api/items
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJVU0VSIl0sInN1YiI6InVzZXIiLCJpYXQiOjE3MDI2NTQ2MjQsImV4cCI6MTcwMjY1NTUyNH0.oj3-GClqPolPE44X1vMUo3JIrV8jDCQkcFpV1zSoeBI
+
+
+
+ng generate component start --skip-tests
+ng generate component items --skip-tests
+ng generate component users --skip-tests
+ng generate component notFound --skip-tests
+ng generate service auth --skip-tests
+ng generate service data --skip-tests
+ng generate guard --skip-tests
+
